@@ -1,46 +1,52 @@
-EasyBitcoin-PHP
+mfcoin-php
 ===============
 
-A simple class for making calls to Bitcoin's API using PHP.
+To the horror, a simple library for sending requests to the MFCoin node via JSON RPC in terrible and outdated PHP (you need more jokes about PHP, write me, add to readme)
 
-Getting Started
+Have fun
 ---------------
-1. Include easybitcoin.php into your PHP script:
+1. How to install
 
     ```php
-    require_once('easybitcoin.php');
+    composer require sagleft\mfcoin-php
     ```
-2. Initialize Bitcoin connection/object:
+2. Initialize MFCoin connection/object:
 
     ```php
-    $bitcoin = new Bitcoin('username','password');
+    $mfcoin = new MFCoin\Client('username','password');
     ```
 
-    Optionally, you can specify a host, port. Default is HTTP on localhost port 8332.
+    Optionally, you can specify a host, port. Default is HTTP on localhost port 22824.
 
     ```php
-    $bitcoin = new Bitcoin('username','password','localhost','8332');
+    $mfcoin = new MFCoin\Client('username','password','localhost','22824');
     ```
 
     If you wish to make an SSL connection you can set an optional CA certificate or leave blank
     ```php
-    $bitcoin->setSSL('/full/path/to/mycertificate.cert');
+    $mfcoin->setSSL('/full/path/to/mycertificate.cert');
     ````
 
 3. Make calls to bitcoind as methods for your object. Examples:
 
     ```php
-    $bitcoin->getinfo();
+    $mfcoin->getinfo();
     
-    $bitcoin->getrawtransaction('0e3e2357e806b6cdb1f70b54c3a3a17b6714ee1f0e68bebb44a74b1efd512098',1);
+    $mfcoin->getrawtransaction('7ce62a44093ee359d86a1707ecf362925afcc918ba38c837dfa42f89572a6816',1);
     
-    $bitcoin->getblock('000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f');
+    $mfcoin->getblock('fbbb5b7f32e562387dc377c24c99778ced80ca726a3cd4bb3bcb13b652f3f6e1');
+    ```
+
+4. You can look at other methods in the MFCoin wallet by typing the "help" command or use:
+
+    ```php
+    print_r($mfcoin->help());
     ```
 
 Additional Info
 ---------------
-* When a call fails for any reason, it will return false and put the error message in `$bitcoin->error`
+* When a call fails for any reason, it will return false and put the error message in `$mfcoin->error`
 
-* The HTTP status code can be found in $bitcoin->status and will either be a valid HTTP status code or will be 0 if cURL was unable to connect.
+* The HTTP status code can be found in $mfcoin->status and will either be a valid HTTP status code or will be 0 if cURL was unable to connect.
 
-* The full response (not usually needed) is stored in `$bitcoin->response` while the raw JSON is stored in `$bitcoin->raw_response`
+* The full response (not usually needed) is stored in `$mfcoin->response` while the raw JSON is stored in `$mfcoin->raw_response`
