@@ -60,7 +60,7 @@ class Client
      * @param string $proto
      * @param string $url
      */
-    public function __construct($username, $password, $host = 'localhost', $port = 8332, $url = null)
+    public function __construct($username, $password, $host = 'localhost', $port = 22824, $url = null)
     {
         $this->username      = $username;
         $this->password      = $password;
