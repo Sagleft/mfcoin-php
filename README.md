@@ -27,7 +27,7 @@ Have fun
     $mfcoin->setSSL('/full/path/to/mycertificate.cert');
     ````
 
-3. Make calls to bitcoind as methods for your object. Examples:
+3. Make calls to mfcoind as methods for your object. Examples:
 
     ```php
     $mfcoin->getinfo();
