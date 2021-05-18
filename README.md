@@ -8,7 +8,7 @@ Have fun
 1. How to install
 
     ```php
-    composer require sagleft\mfcoin-php
+    composer require sagleft/mfcoin-php
     ```
 2. Initialize MFCoin connection/object:
 
